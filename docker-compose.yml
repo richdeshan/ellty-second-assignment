@@ -1,0 +1,33 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb_container
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./be-second-assignment-ellty
+    container_name: backend_container
+    ports:
+      - "5002:5002"
+    environment:
+      - DATABASE_URL=your_mongodb #please use your own mongodb connection, if you want to use mine, ask me for the connection. sorry i had to remove mine beacuse it's going on github.
+      - JWT_SECRET=MYJWTSECRETKEY
+      - PORT=5002
+    depends_on:
+      - mongodb
+
+  frontend:
+    build: ./fe-second-assignment-ellty
+    container_name: frontend_container
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5002
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
