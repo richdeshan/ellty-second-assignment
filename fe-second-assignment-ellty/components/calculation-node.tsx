@@ -78,7 +78,7 @@ export default function CalculationNode({
           </div>
         </div>
 
-        {/* Action Button */}
+        
         <button
           onClick={() => setShowReplyForm(!showReplyForm)}
           className={`mt-4 flex items-center gap-1.5 text-xs font-bold transition-colors ${
