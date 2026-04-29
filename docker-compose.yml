@@ -13,7 +13,7 @@ services:
     ports:
       - "5002:5002"
     environment:
-      - DATABASE_URL=your_mongodb #please use your own mongodb connection, if you want to use mine, ask me for the connection. sorry i had to remove mine beacuse it's going on github.
+      - DATABASE_URL=mongodb://mongodb:27017/ellty_db
       - JWT_SECRET=MYJWTSECRETKEY
       - PORT=5002
     depends_on:
